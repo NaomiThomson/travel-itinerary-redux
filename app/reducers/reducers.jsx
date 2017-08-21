@@ -5,4 +5,13 @@ export var nameReducer = ((state = "world", action) => {
     default:
       return state;
   }
+});
+
+export var locationReducer = ((state = "usa", action) => {
+  switch (action.type) {
+    case "SET_LOCATION":
+      return action.currentLocation;
+    default:
+      return state;
+  }
 })

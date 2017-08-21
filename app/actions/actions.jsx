@@ -4,3 +4,11 @@ export var setName = (currentName) => {
     currentName
   };
 };
+
+export var setLocation = (currentLocation) => {
+  return {
+    type: "SET_LOCATION",
+    currentLocation
+  };
+};
+
