@@ -6,17 +6,19 @@ var { connect } = require('react-redux');
 
 var Coordinates = React.createClass({
   onFormSubmit: function (e) {
-    let { dispatch } = this.props;
     e.preventDefault();
 
-    dispatch(actions.setLocation(this.refs.location.value));
     this.getCoords(location);
+
   },
   getCoords: function (userLocation) {
+    let { dispatch } = this.props;
+
     var query = `https://maps.googleapis.com/maps/api/geocode/json?address=${userLocation}&key=AIzaSyAr02UkNoe3UCCVrkyMNFWKA_PtseA-9gc`;
     axios.get(query)
       .then((res) => {
         console.log(res.data.results[0].geometry.location);
+        dispatch(actions.setLocation(res.data.results[0].geometry.location));
       })
       .catch((err) => {
         console.log(err)
@@ -32,7 +34,6 @@ var Coordinates = React.createClass({
           <button classLocation="btn" type="submit"> Enter </button>
         </form>
 
-        <p>{currentLocation}</p>
       </div>
     );
   }

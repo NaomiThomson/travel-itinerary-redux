@@ -7,7 +7,7 @@ export var nameReducer = ((state = "world", action) => {
   }
 });
 
-export var locationReducer = ((state = "usa", action) => {
+export var locationReducer = ((state = {lat: 0, lng: 0}, action) => {
   switch (action.type) {
     case "SET_LOCATION":
       return action.currentLocation;
